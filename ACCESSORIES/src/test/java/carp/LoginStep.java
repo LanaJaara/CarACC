@@ -14,7 +14,7 @@ public class LoginStep {
 
     @Given("that the user is not logged in")
     public void that_the_user_is_not_logged_in() {
-        u.isLoggedIn(false); // Set the user's login status to false
+        u.login(); // Set the user's login status to false
     }
 
     @Given("the email is {string}")
@@ -49,7 +49,7 @@ public class LoginStep {
 
     @Given("that the installer is not logged in")
     public void that_the_installer_is_not_logged_in() {
-        installer.login(false);
+        installer.login();
     }
 
     @Given("the email is {string} and the password is {string}")
@@ -70,7 +70,7 @@ public class LoginStep {
 
     @Given("that the admin is not logged in")
     public void that_the_admin_is_not_logged_in() {
-        admin.login(false);
+        admin.login();
     }
 
     @Given("the email is {string} and the password is {string}")
