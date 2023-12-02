@@ -16,6 +16,7 @@ Scenario: User can login
 	And the user is not logged in
 	
 
+
 Scenario Outline: Admin or Installer can login
 	Given that the admin or Installer is not logged in
 	And the email is <email> and the pass <pass>
