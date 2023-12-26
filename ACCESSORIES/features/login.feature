@@ -24,5 +24,5 @@ Scenario Outline: Admin or Installer can login
 	And the admin or Installer is logged in
 	Examples: 
       | name     | email               | pass      | status     |
-      | "lana" | "lana@gmail.com"  | "lana"  | admin      |
+      | "Lana" | "lana@gmail.com"  | "lana"  | admin      |
       | "aya"    | "aya@gmail.com"    | "ayaaya1" | Installer  |
