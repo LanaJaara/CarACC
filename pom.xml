@@ -86,7 +86,7 @@
 
     <properties>
 	    <sonar.coverage.exclusions>**/Main.java</sonar.coverage.exclusions>
-        <sonar.organization>myorganizate</sonar.organization>
+        <sonar.organization>Lorganization2</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 </project>
