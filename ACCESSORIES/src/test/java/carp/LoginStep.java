@@ -10,7 +10,8 @@ import io.cucumber.java.en.Then;
 
 public class LoginStep {
     private boolean userLoggedIn = false;
-    private user u = new user();
+    private user u = new user("jodi@gmail.com", "jodi2");
+
     private Installer installer = new Installer();
     private Admin admin = new Admin();
 
