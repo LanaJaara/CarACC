@@ -52,3 +52,5 @@ jobs:
         run: |
          echo "Current directory: $(pwd)"
          echo "Contents of the directory: $(ls -la)"
+      - name: Change to project directory
+        run: cd $GITHUB_WORKSPACE/CarACC   
