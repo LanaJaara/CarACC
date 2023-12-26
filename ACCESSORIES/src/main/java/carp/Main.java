@@ -1,3 +1,4 @@
+
 package carp;
 
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class Main {
                     adminLogin(admin);
                     loggedIn = admin.isLoggedIn();
                     if (loggedIn) {
-                        adminMenu();
+                        adminMenu(admin);
                     }
                     break;
                 case 2:
@@ -34,16 +35,16 @@ public class Main {
                     installerLogin(installer);
                     loggedIn = installer.isLoggedIn();
                     if (loggedIn) {
-                        installerMenu();
+                        installerMenu(installer);
                     }
                     break;
                 case 3:
                     // Handle Customer login
-                    user customer = new user();
+                    user customer = new user("jodi@gmail.com", "jodi2");
                     customerLogin(customer);
                     loggedIn = customer.isLoggedIn();
                     if (loggedIn) {
-                        customerMenu();
+                        customerMenu(customer);
                     }
                     break;
                 case 4:
@@ -55,9 +56,6 @@ public class Main {
                     break;
             }
         }
-
-        // At this point, the user is logged in and you can continue with the respective role.
-        System.out.println("You are now logged in as " + (loggedIn ? "Admin/Installer/Customer" : "Unknown"));
     }
 
     private static void adminLogin(Admin admin) {
@@ -111,7 +109,7 @@ public class Main {
         }
     }
 
-    private static void adminMenu() {
+    private static void adminMenu(Admin admin) {
         int selection;
         Scanner scanner = new Scanner(System.in);
 
@@ -121,16 +119,82 @@ public class Main {
             switch (selection) {
                 case 1:
                     // Handle admin profile login
+                    System.out.println("Admin Profile");
+                    System.out.println("1. View Profile");
+                    System.out.println("2. Logout");
+                    System.out.print("Enter your choice: ");
+                    int profileChoice = scanner.nextInt();
+
+                    switch (profileChoice) {
+                        case 1:
+                        	
+                            System.out.println("Viewing Admin Profile");
+                           admin.viewProfile();
+                            // Add logic to view admin profile
+                            break;
+                        case 2:
+                            System.out.println("Logging out...");
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                            break;
+                    }
                     break;
+
                 case 2:
                     // Handle admin add product
+                    System.out.println("Add Product");
+                    System.out.print("Enter product id: ");
+                    String productId = scanner.next();
+                    System.out.print("Enter product name: ");
+                    String name = scanner.next();
+                    System.out.print("Enter product price: ");
+                    String price = scanner.next();
+                    System.out.print("Enter product availability: ");
+                    String availability = scanner.next();
+                    System.out.print("Enter product categories: ");
+                    String categories = scanner.next();
+                    System.out.print("Enter product image: ");
+                    String image = scanner.next();
+                    System.out.println("the product was added");
+
+                    // Add logic to add product
+                    admin.addProduct(productId, name, price, availability, categories, image);
                     break;
+
                 case 3:
                     // Handle admin update product
+                    System.out.println("Update Product");
+                    System.out.print("Enter product id to update: ");
+                     productId = scanner.next();
+                    System.out.print("Enter new product name: ");
+                    name = scanner.next();
+                    System.out.print("Enter new product price: ");
+                    price = scanner.next();
+                    System.out.print("Enter new product availability: ");
+                    availability = scanner.next();
+                    System.out.print("Enter new product categories: ");
+                    categories = scanner.next();
+                    System.out.print("Enter new product image: ");
+                    image = scanner.next();
+                    System.out.println("the product was updated");
+
+
+                    // Add logic to update product
+                    admin.updateProduct(productId,name, price, availability, categories, image);
                     break;
+
                 case 4:
                     // Handle admin delete product
+                    System.out.println("Delete Product");
+                    System.out.print("Enter product id to delete: ");
+                     productId = scanner.next();
+                    System.out.println("the product was deleted");
+
+                    // Add logic to delete product
+                    admin.deleteProduct(productId);
                     break;
+
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
@@ -138,7 +202,7 @@ public class Main {
         } while (selection != 1);
     }
 
-    private static void installerMenu() {
+    private static void installerMenu(Installer installer) {
         int selection;
         Scanner scanner = new Scanner(System.in);
 
@@ -147,25 +211,27 @@ public class Main {
 
             switch (selection) {
                 case 1:
-                    // Handle installer profile login
+                    installer.viewProfile();
                     break;
                 case 2:
-                    // Handle installer view installation requests
+                    installer.viewInstallationRequests();
                     break;
                 case 3:
-                    // Handle installer schedule appointments
+                    installer.scheduleAppointments();
                     break;
                 case 4:
-                    // Handle installer view appointments
+                    installer.viewAppointments();
                     break;
+                case 5:
+                    System.out.println("Logging out...");
+                    return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
             }
-        } while (selection != 1);
+        } while (true);
     }
-
-    private static void customerMenu() {
+    private static void customerMenu(user loggedInUser) {
         int selection;
         Scanner scanner = new Scanner(System.in);
 
@@ -174,36 +240,104 @@ public class Main {
 
             switch (selection) {
                 case 1:
-                    // Handle customer profile login
+                    // Handle user profile login
+                    System.out.println("User Profile");
+                    System.out.println("1. View Profile");
+                    System.out.println("2. Logout");
+                    System.out.print("Enter your choice: ");
+                    int profileChoice = scanner.nextInt();
+
+                    switch (profileChoice) {
+                        case 1:
+                            System.out.println("Viewing User Profile");
+                            // Add logic to view user profile
+                            loggedInUser.viewProfile();
+                            break;
+                        case 2:
+                            System.out.println("Logging out...");
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                            break;
+                    }
                     break;
+
                 case 2:
-                    // Handle customer browse products
+                    // Handle user browse products
+                    System.out.println("Browse Products");
+                    // Add logic to browse products
+                    loggedInUser.addProduct("2","GreenLight","25","Existing","Interior","greenlight.jpg");
+                    loggedInUser.updateProduct(null, null, null, null, null, null);
+                    loggedInUser.deleteProduct("5");
+                    loggedInUser.browseProducts();
+                    System.out.println("the product");
                     break;
+
                 case 3:
-                    // Handle customer make purchases
+                    // Handle user make purchases
+                    System.out.println("Make Purchases");
+                    // Add logic to make purchases
+                    loggedInUser.makePurchases();
+                    System.out.println("The product was purchased");
                     break;
+
                 case 4:
-                    // Handle customer view orders
+                    // Handle user view orders
+                    System.out.println("View Orders");
+                    // Add logic to view orders
+                    loggedInUser.viewOrders();
                     break;
+
                 case 5:
-                    // Handle customer edit profile
-                    break;
+                	
+                        // TODO: Add logic to get new profile details from the user
+                	System.out.println("Edit the profile:");
+                        System.out.print("Enter new password: ");
+                        String newPass = scanner.next();
+                        System.out.print("Enter new phone: ");
+                        String newPhone = scanner.next();
+                        System.out.print("Enter new name: ");
+                        String newName = scanner.next();
+                        System.out.print("Enter new address: ");
+                        String newAddress = scanner.next();
+                        System.out.print("Enter new age: ");
+                        String newAge = scanner.next();
+
+                        // Call the editProfile method
+                        loggedInUser.editProfile(newPass, newPhone, newName, newAddress, newAge);
+
+
                 case 6:
-                    // Handle customer view installation requests
+                    // Handle user view installation requests
+                    System.out.println("View Installation Requests");
+                    // Add logic to view installation requests
+                    loggedInUser.viewInstallationRequests();
                     break;
+
                 case 7:
-                    // Handle customer request installation appointment
-                    break;
+                	 System.out.println("Request Installation Appointment");
+                     System.out.print("Enter appointment date (dd-MM-yyyy): ");
+                     String appointmentDate = scanner.next();
+                     System.out.print("Enter appointment time: ");
+                     String appointmentTime = scanner.next();
+                     System.out.print("Enter product for installation: ");
+                     String product = scanner.next();
+
+                     // Call the requestInstallationAppointment method
+                     loggedInUser.requestInstallationAppointment(appointmentDate, appointmentTime, product);
+                     break;
+
                 case 8:
-                    // Handle customer view installer availability and appointment
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-                    break;
+                     loggedInUser.viewInstallerAvailabilityAndAppointments();
+                     break;
+                 default:
+                     System.out.println("Invalid choice. Please try again.");
+                     break;
+      
+              
             }
         } while (selection != 1);
     }
-
     public static int InstallerMenu() {
         int selection;
         Scanner scanner = new Scanner(System.in);

@@ -11,12 +11,12 @@ public class UserProfileStep {
     private boolean orderHistoryViewedSuccessfully;
     private boolean installationRequestsViewedSuccessfully;
 
-    @Given("^the Customer is login with email \"LanaJaara@gmail.com\" and password\"lana123\"$")
+    @Given("^the Customer is login with email \"jodi@gmail.com\" and password\"jodi2\"$")
     public void customerLogin(String email, String password) {
         // Implement login logic
     }
 
-    @When("^the Customer with email \"LanaJaara@gmail.com\" can edit his profile newpass \"2822\", newPhone \"0599354282\", newName \"Mira\", newAddress \"Nablus\", newAge \"21\"$")
+    @When("^the Customer with email \"jodi@gmail.com\" can edit his profile newpass \"2822\", newPhone \"0599354282\", newName \"Mira\", newAddress \"Nablus\", newAge \"21\"$")
     public void customerEditProfile(String email, String newPassword, String newPhone, String newName, String newAddress, String newAge) {
         // Implement profile editing logic
        
@@ -29,7 +29,7 @@ public class UserProfileStep {
         assertEquals(true, profileEditedSuccessfully);
     }
 
-    @When("^the Customer with email \"LanaJaara@gmail.com\" can View order history$")
+    @When("^the Customer with email \"jodi@gmail.com\" can View order history$")
     public void customerViewOrderHistory(String email) {
         orderHistoryViewedSuccessfully = true; 
     }
@@ -39,7 +39,7 @@ public class UserProfileStep {
         assertEquals(true, orderHistoryViewedSuccessfully);
     }
 
-    @When("^the Customer with email \"LanaJaara@gmail.com\" can View installation requests$")
+    @When("^the Customer with email \"jodi@gmail.com\" can View installation requests$")
     public void customerViewInstallationRequests(String email) {
         installationRequestsViewedSuccessfully = true; // Change this based on your actual logic
     }

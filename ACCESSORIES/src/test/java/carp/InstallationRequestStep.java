@@ -27,7 +27,7 @@ public class InstallationRequestStep {
         assert installerAvailabilityVisible : "Customers should be able to view Installer availability.";
     }
 
-    @Given("^the Customer is login with email \"LanaJaara@gmail.com\" and password \"lana123\"$")
+    @Given("^the Customer is login with email \"jodi@gmail.com\" and password \"jodi2\"$")
     public void customerLogin(String email, String password) {
         loggedIn = true; 
     }
@@ -38,7 +38,7 @@ public class InstallationRequestStep {
         validInstallationRequest = true; 
     }
 
-    @When("^the Customer with email \"LanaJaara@gmail.com\" enter installation details with date \"12-4-2021\" time \"8:00\" product \"bluelight\"$")
+    @When("^the Customer with email \"jodi@gmail.com\" enter installation details with date \"12-4-2021\" time \"8:00\" product \"bluelight\"$")
     public void enterInstallationDetails(String email, String date, String time, String product) {
         
         // Implement the actual logic based on your application's requirements
