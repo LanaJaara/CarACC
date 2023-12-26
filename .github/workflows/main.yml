@@ -48,3 +48,7 @@ jobs:
         run: |
           cd path/to/your/actual/maven/project  # Replace with the actual path
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Lorganization2_CarACC
+      - name: Debugging
+        run: |
+         echo "Current directory: $(pwd)"
+         echo "Contents of the directory: $(ls -la)"
