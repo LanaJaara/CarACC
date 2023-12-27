@@ -1,12 +1,11 @@
 package carp;
 
 import static org.junit.Assert.assertTrue;
-
-
 import static org.junit.Assert.assertFalse;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class LoginStep {
     private boolean userLoggedIn = false;
@@ -28,7 +27,6 @@ public class LoginStep {
     public void the_password_is(String password) {
         u.setPassword(password);
     }
- 
 
     @Then("the user login succeeds")
     public void the_user_login_succeeds() {
@@ -47,7 +45,7 @@ public class LoginStep {
 
     @Then("the user is not logged in")
     public void the_user_is_not_logged_in() {
-        assertFalse(user.isLoggedIn());
+        assertFalse(u.isLoggedIn());
     }
 
     @Given("that the installer is not logged in")
@@ -76,8 +74,8 @@ public class LoginStep {
         admin.login();
     }
 
-    @Given("the email is {string} and the password is {string}")
-    public void the_email_and_password_is1(String adminEmail, String adminPassword) {
+    @Given("the admin email is {string} and the password is {string}")
+    public void the_admin_email_and_password_is(String adminEmail, String adminPassword) {
         admin.setAdminUsername(adminEmail);
         admin.setAdminPassword(adminPassword);
     }
@@ -90,5 +88,15 @@ public class LoginStep {
     @Then("the admin is logged in")
     public void the_admin_is_logged_in() {
         assertTrue(admin.isLoggedIn());
+    }
+
+    @When("the email {string} and password {string} is entered")
+    public void the_email_and_password_is_entered(String email, String password) {
+        // Your implementation here
+    }
+
+    @When("the email {string} and password {string} is entered1")
+    public void the_email_and_password_is_entered1(String email, String password) {
+        // Your implementation here
     }
 }
