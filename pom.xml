@@ -34,9 +34,9 @@
         <version>4.4</version>
     </dependency>
 	   <dependency>
-        <groupId>group.of.InstallationRequestManager</groupId>
-        <artifactId>InstallationRequestManager-artifact-id</artifactId>
-        <version>desired-version</version>
+        <groupId>CAR</groupId>
+        <artifactId>ACCESSORIES</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </dependency>
    </dependencies> 
 
