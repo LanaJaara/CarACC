@@ -17,6 +17,8 @@ public class InstallationRequestStep {
     private boolean installerAvailabilityVisible;
     private boolean customerLoggedIn;
     private boolean validInstallationAppointmentRequested;
+    private InstallationRequestManager requestManager = new InstallationRequestManager();
+
     private void assertLoggedIn() {
         assert loggedIn : "Customer should be logged in.";
     }
@@ -48,16 +50,22 @@ public class InstallationRequestStep {
     }
 
     @When("the Customer with email {string} enter installation details with date {string} time {string} product {string}")
-    public void enterInstallationDetails(String email, String date, String time, String product) {
-        // Validate installation details
+    public void the_Customer_with_email_enter_installation_details_with_date_time_product(String email, String date, String time, String product) {
+        // Implement the logic to handle installation request
+        // Assuming you have a method in InstallationRequestManager to handle requests
         try {
-            if (customerLoggedIn && isValidDate(date) && isValidTime(time) && isValidProduct(product)) {
-                validInstallationAppointmentRequested = true;
-            }
+            Date installationDate = parseDate(date);
+            requestManager.submitInstallationRequest(email, installationDate, time, product);
         } catch (ParseException e) {
-            // Handle parsing exceptions if needed
             e.printStackTrace();
+            // Handle parsing exception as needed
         }
+    }
+
+    private Date parseDate(String date) throws ParseException {
+        // Your date parsing logic, adjust as per your requirements
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.parse(date);
     }
     @Then("^Customers can request installation$")
     public void customersCanRequestInstallation() {
@@ -89,7 +97,24 @@ public class InstallationRequestStep {
         return !product.isEmpty(); // For simplicity, consider the product as valid if not empty
     }
 
+ @When("the Customer with email {string} can View installation requests")
+    public void the_Customer_with_email_can_View_installation_requests(String email) {
+        // Implement the logic to view installation requests for the customer
+        List<InstallationRequestManager.InstallationRequest> installationRequests =
+                requestManager.getInstallationRequestsForCustomer(email);
 
+        // Your logic to handle the retrieved installation requests
+        if (installationRequests.isEmpty()) {
+            System.out.println("No installation requests found for customer: " + email);
+        } else {
+            System.out.println("Installation requests for customer: " + email);
+            for (InstallationRequestManager.InstallationRequest request : installationRequests) {
+                System.out.println("Date: " + request.getInstallationDate() +
+                        ", Time: " + request.getInstallationTime() +
+                        ", Product: " + request.getProduct());
+            }
+        }
+    }
     @Then("Customers cant request installation")
     public void customersCantRequestInstallation() {
         // Throw an exception if the conditions for a valid installation request are not met
