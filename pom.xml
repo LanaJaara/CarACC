@@ -41,13 +41,7 @@
    </dependencies> 
 
 	  <build> 
-		  <repositories>
-    <repository>
-        <id>central</id>
-        <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-   
-</repositories>
+		 
 	<plugins>
 		
         <plugin>
@@ -106,7 +100,13 @@
         <id>jacoco-repo</id>
         <url>https://www.eclemma.org/jacoco/trunk/repo</url>
     </repository>
-		
+	 
+    <repository>
+        <id>central</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+   
+
 </repositories>
 
     <properties>
